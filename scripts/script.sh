@@ -22,7 +22,7 @@ chmod +x ${propertiesFile}
 if [ $buildType = 'debug' ]; then
 	(setProperty "KEYSTORE" "debug.keystore")
 	(setProperty "STORE_PASSWORD" "123456")
-	(setProperty "KEY_ALIAS" "my_alias")
+	(setProperty "KEY_ALIAS" "debug")
 	(setProperty "KEY_PASSWORD" "123456")
 elif [ $buildType = 'release' ]; then
 	(setProperty "KEYSTORE" "release.keystore")
