@@ -19,15 +19,9 @@ platform :android do
   desc "Runs all the tests"
   lane :test do
     gradle(
-      task: "assemble",
+      task: "assembleRelease",
       build_type: "Release",
       print_command: false,
-      properties: {
-        "android.injected.signing.store.file" => "KEYSTORE",
-        "android.injected.signing.store.password" => "STORE_PASSWORD",
-        "android.injected.signing.key.alias" => "KEY_ALIAS",
-        "android.injected.signing.key.password" => "KEY_PASSWORD",
-      }
     )
   end
 
