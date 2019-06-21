@@ -27,6 +27,9 @@ platform :android do
         "android.injected.signing.store.password" => options[:STORE_PASSWORD],
         "android.injected.signing.key.alias" => options[:KEY_ALIAS],
         "android.injected.signing.key.password" => options[:KEY_PASSWORD],
+        "versionCode" => versionCode,
+        "versionName" => versionName,
+
       }
     )
   end
@@ -42,6 +45,8 @@ platform :android do
           "android.injected.signing.store.password" => "123456",
           "android.injected.signing.key.alias" => "debug",
           "android.injected.signing.key.password" => "123456",
+          "versionCode" => versionCode,
+          "versionName" => versionName,
         }
       )
     end
