@@ -18,7 +18,17 @@ default_platform(:android)
 platform :android do
   desc "Runs all the tests"
   lane :test do
-    gradle(task: "test")
+    gradle(
+      task: "assemble",
+      build_type: "Release",
+      print_command: false,
+      properties: {
+        "android.injected.signing.store.file" => "KEYSTORE",
+        "android.injected.signing.store.password" => "STORE_PASSWORD",
+        "android.injected.signing.key.alias" => "KEY_ALIAS",
+        "android.injected.signing.key.password" => "KEY_PASSWORD",
+      }
+    )
   end
 
   desc "Submit a new Beta Build to Crashlytics Beta"
