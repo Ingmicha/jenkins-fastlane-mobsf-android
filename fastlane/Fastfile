@@ -27,15 +27,13 @@ platform :android do
         "android.injected.signing.store.password" => options[:STORE_PASSWORD],
         "android.injected.signing.key.alias" => options[:KEY_ALIAS],
         "android.injected.signing.key.password" => options[:KEY_PASSWORD],
-        "versionCode" => versionCode,
-        "versionName" => versionName,
-
       }
     )
   end
 
   desc "Runs all the debug"
     lane :debug do
+    increment_version_code
       gradle(
         task: "assemble",
         build_type: "Debug",
@@ -45,9 +43,23 @@ platform :android do
           "android.injected.signing.store.password" => "123456",
           "android.injected.signing.key.alias" => "debug",
           "android.injected.signing.key.password" => "123456",
-          "versionCode" => versionCode,
-          "versionName" => versionName,
         }
       )
     end
+
+    desc "Runs all the debug"
+        lane :develop do
+        increment_version_code
+          gradle(
+            task: "assemble",
+            build_type: "Debug",
+            print_command: false,
+            properties: {
+              "android.injected.signing.store.file" => "keystore/debug",
+              "android.injected.signing.store.password" => "123456",
+              "android.injected.signing.key.alias" => "debug",
+              "android.injected.signing.key.password" => "123456",
+            }
+          )
+        end
 end
